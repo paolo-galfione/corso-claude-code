@@ -123,6 +123,16 @@ Il corso è **ispirazionale, non operativo**: fornisce esempi concreti per stimo
 - **MCP GitHub**: integra operazioni su repository (issues, PR, code review) direttamente nel flusso di lavoro
 - Configurazione e uso pratico nel progetto di esempio
 
+#### Screencast 3.5: Subagenti
+**Scopo**: Comprendere il ruolo dei subagenti per gestire contesto e specializzazione
+
+- Il problema del contesto che si satura con task eterogenei
+- Subagenti come soluzione: contesto pulito e specializzato
+- Subagenti espliciti (invocati) vs impliciti (automatici)
+- Demo pratica di invocazione subagente
+- Subagenti nel corso: Test Agent, Refactoring Agent, Documentation Agent, Code Review Agent
+- Parallelizzazione di task indipendenti
+
 ---
 
 ### MODULO 4: L'Analista Funzionale
@@ -269,11 +279,22 @@ Backend Express.js volutamente "spaghetti code":
 | Ruolo | Strumenti Principali |
 |-------|---------------------|
 | Product Owner | Plan Mode, Chat per analisi |
-| Architetto | CLAUDE.md, Commands, Skills, Hooks, MCP |
+| Architetto | CLAUDE.md, Commands, Skills, Hooks, MCP, Subagenti |
 | Analista | Plan Mode, generazione documenti |
-| Sviluppatore | Tutti (esecuzione supervisionata) |
+| Sviluppatore | Tutti + Subagenti specializzati (esecuzione supervisionata) |
 
 **Plan Mode**: strumento trasversale usato da tutti i ruoli per strutturare il lavoro.
+
+**Subagenti**: agenti specializzati che mantengono contesto pulito e permettono parallelizzazione.
+
+### Subagenti nel Corso
+
+| Subagente | Specializzazione | Fasi di utilizzo |
+|-----------|------------------|------------------|
+| Test Agent | Creazione e verifica test | Fase 0, Fase 3 |
+| Refactoring Agent | Estrazione layer, pattern | Fase 1, Fase 2 |
+| Documentation Agent | JSDoc, OpenAPI | Fase 5 |
+| Code Review Agent | Qualità, security | Trasversale |
 
 ---
 
