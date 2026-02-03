@@ -9,7 +9,11 @@ sudo apt-get install -y --no-install-recommends \
     chromium \
     fonts-liberation \
     fonts-noto-color-emoji \
-    libxss1
+    libxss1 \
+    git-lfs
+
+# Inizializza Git LFS
+git lfs install
 
 # Pulisci cache apt per ridurre dimensione immagine
 sudo apt-get clean
@@ -30,5 +34,6 @@ echo "=== Verifica installazioni ==="
 echo "Chromium: $(chromium --version)"
 echo "Marp CLI: $(marp --version)"
 echo "Mermaid CLI: $(mmdc --version)"
+echo "Git LFS: $(git lfs --version)"
 
 echo "=== Setup completato ==="

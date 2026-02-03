@@ -63,3 +63,8 @@ Lo skill:
 - Blu principale: `#0069b4`
 - Blu scuro: `#005291`
 - Blu sfondo: `#e6f3fa`
+
+## Convenzioni Git
+
+- Messaggi di commit essenziali e sintetici
+- Non aggiungere firme Co-Authored-By
