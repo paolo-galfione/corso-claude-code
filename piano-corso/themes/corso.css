@@ -1,0 +1,441 @@
+/* @theme corso */
+@import 'default';
+
+/*
+ * Design System Zucchetti Healthcare
+ * Corso Claude Code per Team di Sviluppo
+ *
+ * PALETTE SEMPLIFICATA:
+ * - Blu Zucchetti #0069b4: colore ufficiale per tutto
+ * - Varianti blu per gerarchia visiva
+ * - Verde solo per checkmark takeaway
+ */
+
+:root {
+  /* === PALETTE BLU ZUCCHETTI UFFICIALE === */
+  --color-primary: #0069b4;
+  --color-primary-dark: #005291;
+  --color-primary-light: #3399cc;
+  --color-primary-lighter: #e6f3fa;
+
+  /* Testi */
+  --color-text: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-text-light: #888888;
+
+  /* Bordi e divisori */
+  --color-border: #0069b4;
+  --color-border-light: #b3d9f0;
+
+  /* Diagrammi (palette blu) */
+  --color-diagram-start: #e6f3fa;
+  --color-diagram-process: #b3d9f0;
+  --color-diagram-decision: #0069b4;
+  --color-diagram-border: #005291;
+
+  /* Neutrali */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #f8f9fa;
+  --color-bg-code: #f5f5f5;
+
+  /* Semantici */
+  --color-success: #28a745;
+  --color-error: #dc3545;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', 'Monaco', monospace;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* === BASE === */
+section {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: var(--space-5);
+  padding-bottom: 80px;
+}
+
+/* === FOOTER CON LOGO A DESTRA === */
+footer {
+  position: absolute;
+  bottom: 15px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8em;
+  color: var(--color-text-light);
+}
+
+footer::after {
+  content: '';
+  background-image: url('./logo_zucchetti.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  width: 180px;
+  height: 56px;
+}
+
+/* === PAGINAZIONE (centrata) === */
+section::after {
+  font-weight: 500;
+  color: var(--color-primary);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9em;
+}
+
+/* === SLIDE TITOLO (classe: title) === */
+section.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #005291 0%, #0069b4 100%);
+  color: white;
+  gap: var(--space-2);
+}
+
+section.title h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  border: none;
+}
+
+section.title p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.4em;
+  font-weight: 400;
+  margin: 0;
+}
+
+section.title small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1em;
+  font-weight: 300;
+  margin: 0;
+}
+
+section.title::after {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+section.title footer {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+section.title footer::after {
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+/* === TITOLI (palette blu, spaziatura ridotta) === */
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-border-light);
+  padding-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+
+/* === SLIDE DIAGRAMMA (classe: diagram) - PALETTE BLU === */
+section.diagram {
+  background: var(--color-bg);
+}
+
+section.diagram h2 {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-border-light);
+}
+
+section.diagram img {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  max-height: 420px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+section.diagram pre {
+  font-family: var(--font-mono);
+  font-size: 0.6em;
+  line-height: 1.3;
+  background: var(--color-bg);
+  border: none;
+  padding: var(--space-3);
+  color: var(--color-text);
+}
+
+section.diagram code {
+  background: transparent;
+  color: var(--color-text);
+}
+
+/* === CODICE (tema chiaro per leggibilita) === */
+pre {
+  border-radius: var(--radius-md);
+  margin: var(--space-2) 0;
+  background: var(--color-bg-code);
+  border: 1px solid var(--color-border-light);
+  overflow-x: auto;
+}
+
+pre code {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  line-height: 1.5;
+  background: transparent;
+  color: #333333;
+  border-radius: 0;
+  padding: var(--space-3);
+  border: none;
+  display: block;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+code {
+  font-family: var(--font-mono);
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+/* === BOX ENFATICO (palette blu) === */
+blockquote {
+  border-left: 4px solid var(--color-primary);
+  background: var(--color-bg-alt);
+  padding: var(--space-3);
+  margin: var(--space-3) 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: normal;
+}
+
+blockquote p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* === SLIDE DEMO (classe: demo) - BLU CHIARO === */
+section.demo {
+  background: linear-gradient(180deg, var(--color-primary-lighter) 0%, var(--color-bg) 25%);
+}
+
+section.demo h2 {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-border-light);
+}
+
+section.demo h2::before {
+  content: "DEMO: ";
+  font-weight: 700;
+}
+
+/* === LISTE (bullet tondi standard) === */
+ul, ol {
+  padding-left: var(--space-4);
+  margin: var(--space-2) 0;
+}
+
+li {
+  margin: var(--space-2) 0;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: disc;
+}
+
+ul > li::marker {
+  color: var(--color-primary);
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol > li::marker {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* === SLIDE TAKEAWAY (classe: takeaway) - SPUNTE VERDI === */
+section.takeaway {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+}
+
+section.takeaway h2 {
+  color: var(--color-primary);
+}
+
+section.takeaway h2::before {
+  content: "TAKEAWAY: ";
+}
+
+section.takeaway ul {
+  list-style: none;
+  padding-left: var(--space-4);
+}
+
+section.takeaway ul > li {
+  position: relative;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+section.takeaway ul > li::before {
+  content: "\2713";
+  color: var(--color-success);
+  font-weight: bold;
+  position: absolute;
+  left: -1.5em;
+}
+
+/* === TABELLE (header blu, testo bianco) === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--space-3) 0;
+  font-size: 0.9em;
+}
+
+thead {
+  background: var(--color-primary) !important;
+}
+
+thead tr {
+  background: var(--color-primary) !important;
+}
+
+th {
+  background: var(--color-primary) !important;
+  color: white !important;
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+}
+
+td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+tbody tr:nth-child(even) {
+  background: var(--color-bg-alt);
+}
+
+/* === LINK (palette blu) === */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === IMMAGINI === */
+img {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+}
+
+/* === SLIDE SEZIONE (classe: section) === */
+section.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+}
+
+section.section h1 {
+  color: white;
+  font-size: 2.5em;
+  border: none;
+}
+
+section.section p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.25em;
+}
+
+section.section::after {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* === STRONG/EMPHASIS (palette blu) === */
+strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+em {
+  color: var(--color-primary-dark);
+  font-style: italic;
+}
+
+/* === HR/DIVISORI (palette blu) === */
+hr {
+  border: none;
+  border-top: 2px solid var(--color-border-light);
+  margin: var(--space-4) 0;
+}
+
+/* === HEADER CUSTOM === */
+header {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  font-size: 0.75em;
+  color: var(--color-text-light);
+}

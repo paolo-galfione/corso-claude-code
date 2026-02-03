@@ -1,0 +1,10 @@
+# Output generati
+output/
+diagrams/*.svg
+diagrams/*.png
+
+# Dipendenze
+node_modules/
+
+# Cache
+.cache/
