@@ -81,7 +81,7 @@ Il file sorgente (es. `1.1-cambio-di-paradigma.md`) è uno **script per screenca
 marp: true
 theme: corso
 paginate: true
-footer: 'Zucchetti Healthcare'
+footer: 'Zucchetti Healthcare | Paolo Galfione'
 ---
 ```
 
@@ -226,22 +226,7 @@ const example = "code";
 console.log(example);
 ```
 
-### 5. SLIDE DEMO (da "## DEMO N:")
-
-```markdown
----
-<!-- _class: demo -->
-
-## Nome della Demo
-
-1. Primo passo da eseguire
-2. Secondo passo
-3. Terzo passo
-
-> Output atteso: descrizione
-```
-
-### 6. SLIDE TABELLA
+### 5. SLIDE TABELLA
 
 Le tabelle hanno header blu con testo bianco automaticamente.
 
@@ -256,7 +241,7 @@ Le tabelle hanno header blu con testo bianco automaticamente.
 | C | D |
 ```
 
-### 7. SLIDE TAKEAWAY (ultima)
+### 6. SLIDE TAKEAWAY (ultima)
 
 ```markdown
 ---
@@ -290,7 +275,7 @@ Le tabelle hanno header blu con testo bianco automaticamente.
 Dato un argomento (es. `1.1-cambio-di-paradigma`):
 
 1. Leggi la traccia da `piano-corso/<nome>/<nome>.md`
-2. Identifica le sezioni SLIDE e DEMO
+2. Identifica le sezioni SLIDE (ignora sezioni DEMO)
 3. Per ogni diagramma ASCII:
    - Crea file `.mmd` in `piano-corso/<nome>/diagrammi/`
    - Converti: `mmdc -p puppeteer-config.json -i piano-corso/<nome>/diagrammi/file.mmd -o piano-corso/<nome>/diagrammi/file.svg`
@@ -298,13 +283,14 @@ Dato un argomento (es. `1.1-cambio-di-paradigma`):
 5. Salva in `piano-corso/<nome>/<nome>-marp.md`
 6. Genera PDF:
    ```bash
-   marp --theme-set piano-corso/themes/ --pdf --allow-local-files -o piano-corso/<nome>/<nome>-marp.pdf piano-corso/<nome>/<nome>-marp.md
+   marp --no-stdin --theme-set piano-corso/themes/ --pdf --allow-local-files -o piano-corso/<nome>/<nome>.pdf piano-corso/<nome>/<nome>-marp.md
    ```
 7. **VERIFICA LEGGIBILITA** (obbligatoria):
-   - Genera JPG per verifica visiva:
+   - Genera JPG per verifica visiva in /tmp (non creare cartelle nel progetto):
      ```bash
-     marp --theme-set piano-corso/themes/ --images jpeg --allow-local-files -o piano-corso/<nome>/output piano-corso/<nome>/<nome>-marp.md
+     marp --no-stdin --theme-set piano-corso/themes/ --images jpeg --allow-local-files -o /tmp/slide-check piano-corso/<nome>/<nome>-marp.md
      ```
+   - Rinomina i file generati aggiungendo `.jpeg` e leggili per verifica
    - Controlla che:
      - [ ] Il testo sia leggibile (specialmente codice)
      - [ ] I diagrammi non siano tagliati e stiano nello spazio
@@ -321,14 +307,14 @@ Input: `1.1-cambio-di-paradigma`
 Output:
 - `piano-corso/1.1-cambio-di-paradigma/diagrammi/loop-agentico.mmd` + `.svg`
 - `piano-corso/1.1-cambio-di-paradigma/1.1-cambio-di-paradigma-marp.md`
-- `piano-corso/1.1-cambio-di-paradigma/1.1-cambio-di-paradigma-marp.pdf`
+- `piano-corso/1.1-cambio-di-paradigma/1.1-cambio-di-paradigma.pdf`
 
 ```markdown
 ---
 marp: true
 theme: corso
 paginate: true
-footer: 'Zucchetti Healthcare'
+footer: 'Zucchetti Healthcare | Paolo Galfione'
 ---
 
 <!-- _class: title -->
@@ -354,17 +340,6 @@ Il cambio di paradigma nell'uso degli LLM
 ## Loop Agentico
 
 ![Loop Agentico](./diagrammi/loop-agentico.svg)
-
----
-<!-- _class: demo -->
-
-## Prima Demo
-
-1. Apri Claude Code
-2. Dai un obiettivo complesso
-3. Osserva il loop agentico in azione
-
-> L'agente pianifica, esegue e verifica autonomamente
 
 ---
 <!-- _class: takeaway -->
