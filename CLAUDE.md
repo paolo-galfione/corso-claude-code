@@ -48,6 +48,17 @@ Lo skill:
 3. Converte diagrammi ASCII in Mermaid con palette blu Zucchetti
 4. Genera `<nome>-marp.md` e PDF
 
+### `/demo <nome-modulo>`
+
+Attiva la modalità DEMO per registrare screencast seguendo lo script. Esempio: `/demo 1.1-cambio-di-paradigma`
+
+Lo skill:
+1. Legge lo script della demo da `piano-corso/<nome>/<nome>.md`
+2. Estrae le sezioni `## DEMO N:` con azioni da eseguire
+3. Configura Claude per seguire RIGIDAMENTE lo script (no improvvisazioni)
+4. Genera errori intenzionali come previsto (per scopo didattico)
+5. Mostra il loop di auto-correzione commentando ogni passaggio
+
 ### Classi CSS Marp disponibili
 
 | Classe | Uso |

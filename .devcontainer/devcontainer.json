@@ -12,7 +12,8 @@
       "extensions": [
         "anthropic.claude-code",
         "marp-team.marp-vscode",
-        "tomoki1207.pdf"
+        "tomoki1207.pdf",
+        "qwtel.sqlite-viewer"
       ]
     }
   },

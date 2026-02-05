@@ -12,7 +12,13 @@ Quando registri una demo per il corso, Claude Code deve:
 
 ## Input
 
-Argomento: nome del modulo (es. `1.1-cambio-di-paradigma`)
+Argomenti:
+- `<nome-modulo>`: nome del modulo (es. `1.1-cambio-di-paradigma`)
+- `[numero-demo]`: (opzionale) numero della demo da eseguire (es. `2` per partire dalla DEMO 2)
+
+Esempi:
+- `/demo 6.1-identificazione-fix-bug` → tutte le demo del modulo
+- `/demo 6.1-identificazione-fix-bug 2` → solo DEMO 2 del modulo
 
 ## Struttura File Sorgente
 
@@ -147,25 +153,25 @@ Se lo script prevede un errore:
 
 ## Workflow Demo
 
-Quando l'utente esegue `/demo <nome-modulo>`:
+Quando l'utente esegue `/demo <nome-modulo> [numero-demo]`:
 
 1. **Carica lo script**:
    - Leggi `piano-corso/<nome>/<nome>.md`
    - Identifica tutte le sezioni `## DEMO N:`
+   - Se `[numero-demo]` è specificato, seleziona solo quella demo
    - Estrai: Cosa mostrare, Punti da evidenziare
 
-2. **Comunica il piano**:
-   ```
-   📹 MODALITÀ DEMO ATTIVA: <nome-modulo>
+2. **Output PULITO per registrazione**:
 
-   Demo trovate:
-   1. DEMO 1: <titolo>
-      - <azione 1>
-      - <azione 2>
-      ...
+   **IMPORTANTE**: La risposta deve essere minimale e pulita per la registrazione.
+   NON mostrare liste di demo, NON mostrare spiegazioni introduttive.
 
-   Pronto per la registrazione. Dimmi quando iniziare.
+   Rispondi SOLO con:
    ```
+   ▶ DEMO <N>: <titolo>
+   ```
+
+   Poi ATTENDI che l'utente dica "via" o "inizia" prima di procedere.
 
 3. **Durante la demo**:
    - Segui lo script passo-passo
@@ -174,15 +180,9 @@ Quando l'utente esegue `/demo <nome-modulo>`:
    - Spiega il ragionamento come da "Punti da evidenziare"
 
 4. **Fine demo**:
-   ```
-   ✅ Demo completata secondo lo script.
-
-   Momento chiave mostrati:
-   - [x] Errore generato
-   - [x] Analisi eseguita
-   - [x] Correzione applicata
-   - [x] Verifica successo
-   ```
+   - NON mostrare checklist o riepilogo (distrae dalla registrazione)
+   - Se ci sono altre demo da fare, mostra solo: `▶ DEMO <N+1>: <titolo>`
+   - Se è l'ultima, mostra solo: `✅ Demo completata`
 
 ---
 
@@ -212,16 +212,11 @@ Quando l'utente esegue `/demo <nome-modulo>`:
 **Esecuzione in Modalità Demo**:
 
 ```
-Claude: 📹 MODALITÀ DEMO ATTIVA
-Demo 1: L'Agente che si Auto-Corregge
+Utente: /demo 1.1-cambio-di-paradigma 1
 
-Sequenza prevista:
-1. Scrivere codice che legge file inesistente
-2. Eseguire e ricevere errore
-3. Analizzare e correggere
-4. Verificare successo
+Claude: ▶ DEMO 1: L'Agente che si Auto-Corregge
 
----
+Utente: via
 
 Claude: "Scrivo una funzione che legge un file config.json e stampa il contenuto"
 
@@ -256,7 +251,9 @@ Claude: "Ri-eseguo per verificare la correzione"
 [Lancia di nuovo]
 [Output: "File config.json non trovato. Uso configurazione di default."]
 
-✅ "La correzione funziona. L'agente ha gestito l'errore autonomamente."
+"La correzione funziona. L'agente ha gestito l'errore autonomamente."
+
+✅ Demo completata
 ```
 
 ---
