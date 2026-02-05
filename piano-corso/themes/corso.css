@@ -430,6 +430,25 @@ hr {
   margin: var(--space-4) 0;
 }
 
+/* === LAYOUT A COLONNE === */
+.columns {
+  display: flex;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.columns > div {
+  flex: 1;
+}
+
+.columns > div:first-child {
+  padding-right: var(--space-2);
+}
+
+.columns > div:last-child {
+  padding-left: var(--space-2);
+}
+
 /* === HEADER CUSTOM === */
 header {
   position: absolute;
