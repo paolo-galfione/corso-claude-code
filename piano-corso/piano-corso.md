@@ -167,9 +167,21 @@ Il corso è **ispirazionale, non operativo**: fornisce esempi concreti per stimo
 
 ---
 
-### MODULO 6: Sviluppo - Fase 1: Separazione 3-Tier
+### MODULO 6: Sviluppo - Fase 1: Bug Fixing
 
-#### Screencast 6.1: Da Spaghetti a Layered Architecture
+#### Screencast 6.1: Identificazione e Fix dei Bug
+**Scopo**: Mostrare come Claude trova e corregge bug sul codice legacy
+
+- Bug di sicurezza: SQL injection (fix con prepared statements)
+- Bug logici: filtri errati, edge case non gestiti
+- Bug di performance: N+1 query (fix con JOIN SQL)
+- Demo dell'auto-correzione dell'agente
+
+---
+
+### MODULO 7: Sviluppo - Fase 2: Separazione 3-Tier
+
+#### Screencast 7.1: Da Spaghetti a Layered Architecture
 **Scopo**: Refactoring verso architettura a 3 livelli
 
 - Identificazione delle responsabilità nel codice legacy
@@ -180,9 +192,9 @@ Il corso è **ispirazionale, non operativo**: fornisce esempi concreti per stimo
 
 ---
 
-### MODULO 7: Sviluppo - Fase 2: Introduzione ORM
+### MODULO 8: Sviluppo - Fase 3: Introduzione ORM
 
-#### Screencast 7.1: Migrazione a Knex.js
+#### Screencast 8.1: Migrazione a Knex.js
 **Scopo**: Sostituire query SQL raw con query builder
 
 - Introduzione a Knex.js (query builder leggibile e semplice)
@@ -192,27 +204,15 @@ Il corso è **ispirazionale, non operativo**: fornisce esempi concreti per stimo
 
 ---
 
-### MODULO 8: Sviluppo - Fase 3: Unit Testing
+### MODULO 9: Sviluppo - Fase 4: Unit Testing
 
-#### Screencast 8.1: Test sui Service Layer
+#### Screencast 9.1: Test sui Service Layer
 **Scopo**: Aggiungere unit test alla nuova architettura
 
 - Strategia di testing per layer Service
 - Mock dei Repository
 - Copertura dei casi limite
 - Integrazione nel workflow di sviluppo
-
----
-
-### MODULO 9: Sviluppo - Fase 4: Bug Fixing
-
-#### Screencast 9.1: Identificazione e Fix dei Bug
-**Scopo**: Mostrare come Claude trova e corregge bug di diversi tipi
-
-- Bug logici: errori nella business logic
-- Bug di sicurezza: SQL injection, validazione input
-- Bug di performance: query inefficienti, N+1
-- Demo dell'auto-correzione dell'agente
 
 ---
 
@@ -291,8 +291,9 @@ Backend Express.js volutamente "spaghetti code":
 
 | Subagente | Specializzazione | Fasi di utilizzo |
 |-----------|------------------|------------------|
-| Test Agent | Creazione e verifica test | Fase 0, Fase 3 |
-| Refactoring Agent | Estrazione layer, pattern | Fase 1, Fase 2 |
+| Test Agent | Creazione e verifica test | Fase 0, Fase 4 |
+| Bug Fix Agent | Sicurezza, logica, performance | Fase 1 |
+| Refactoring Agent | Estrazione layer, pattern | Fase 2, Fase 3 |
 | Documentation Agent | JSDoc, OpenAPI | Fase 5 |
 | Code Review Agent | Qualità, security | Trasversale |
 
