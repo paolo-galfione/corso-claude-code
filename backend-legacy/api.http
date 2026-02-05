@@ -1,0 +1,135 @@
+### ============================================
+### Northwind Legacy API - REST Client Examples
+### ============================================
+
+@baseUrl = http://localhost:3000
+
+
+### ============================================
+### HEALTH CHECK
+### ============================================
+
+### Health check - verifica stato server e database
+GET {{baseUrl}}/health
+
+
+### ============================================
+### CUSTOMERS - Esempi base
+### ============================================
+
+### Lista tutti i customers
+GET {{baseUrl}}/customers
+
+### Singolo customer per ID
+GET {{baseUrl}}/customers/ALFKI
+
+### Customer inesistente (ritorna undefined, non 404 - è un bug!)
+GET {{baseUrl}}/customers/XXXXX
+
+
+### ============================================
+### CUSTOMERS - Filtri interessanti
+### ============================================
+
+### Filtra per città
+GET {{baseUrl}}/customers?city=London
+
+### Filtra per paese (ATTENZIONE: c'è un bug, usa City invece di Country!)
+GET {{baseUrl}}/customers?country=Germany
+
+### Filtra per nome contatto (LIKE)
+GET {{baseUrl}}/customers?contactName=Maria
+
+### Filtra per nome azienda (inizia con)
+GET {{baseUrl}}/customers?companyName=A
+
+### Ricerca generica (cerca in CompanyName, ContactName, City)
+GET {{baseUrl}}/customers?search=Market
+
+### Combinazione di filtri
+GET {{baseUrl}}/customers?city=London&contactName=Thomas
+
+
+### ============================================
+### CUSTOMERS - Statistiche
+### ============================================
+
+### Statistiche ordini per un customer (totale ordini e spesa)
+GET {{baseUrl}}/customers/ALFKI/stats
+
+### Stats per un cliente con molti ordini
+GET {{baseUrl}}/customers/QUICK/stats
+
+
+### ============================================
+### ORDERS - Esempi base
+### ============================================
+
+### Lista tutti gli ordini (limitato a 999)
+GET {{baseUrl}}/orders
+
+### Singolo ordine
+GET {{baseUrl}}/orders/10248
+
+### Singolo ordine CON dettagli prodotti
+GET {{baseUrl}}/orders/10248?includeDetails=true
+
+### Ordine inesistente (questo ritorna 404 correttamente)
+GET {{baseUrl}}/orders/99999
+
+
+### ============================================
+### ORDERS - Filtri interessanti
+### ============================================
+
+### Ordini di un customer specifico
+GET {{baseUrl}}/orders?customerId=ALFKI
+
+### Ordini gestiti da un employee specifico
+GET {{baseUrl}}/orders?employeeId=5
+
+### Ordini da una certa data (nota: dateFrom in camelCase)
+GET {{baseUrl}}/orders?dateFrom=1997-01-01
+
+### Ordini fino a una certa data (nota: date_to con underscore - inconsistente!)
+GET {{baseUrl}}/orders?date_to=1996-12-31
+
+### Range di date
+GET {{baseUrl}}/orders?dateFrom=1997-01-01&date_to=1997-06-30
+
+### Solo ordini spediti
+GET {{baseUrl}}/orders?shipped=true
+
+### Solo ordini NON spediti (in attesa)
+GET {{baseUrl}}/orders?shipped=false
+
+### Ordini con totale minimo (LENTO - N+1 query!)
+GET {{baseUrl}}/orders?minTotal=1000
+
+### Combinazione filtri: ordini di ALFKI nel 1997 già spediti
+GET {{baseUrl}}/orders?customerId=ALFKI&dateFrom=1997-01-01&date_to=1997-12-31&shipped=true
+
+
+### ============================================
+### ORDER DETAILS
+### ============================================
+
+### Dettagli di un ordine (con totali calcolati)
+GET {{baseUrl}}/orders/10248/details
+
+### Dettagli di un ordine grande
+GET {{baseUrl}}/orders/10250/details
+
+
+### ============================================
+### PRODUCTS
+### ============================================
+
+### Top 10 prodotti più venduti (default)
+GET {{baseUrl}}/products/top-selling
+
+### Top 5 prodotti più venduti
+GET {{baseUrl}}/products/top-selling?limit=5
+
+### Top 20 prodotti più venduti
+GET {{baseUrl}}/products/top-selling?limit=20
