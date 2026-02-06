@@ -5,6 +5,7 @@ output/
 piano-corso/**/*-marp.md
 piano-corso/**/*.pdf
 piano-corso/**/diagrammi/*.svg
+piano-corso/**/diagrammi/*.mmd
 
 # Dipendenze
 node_modules/
