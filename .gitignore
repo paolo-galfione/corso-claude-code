@@ -1,7 +1,10 @@
 # Output generati
 output/
-diagrams/*.svg
-diagrams/*.png
+
+# Artefatti genera-slide
+piano-corso/**/*-marp.md
+piano-corso/**/*.pdf
+piano-corso/**/diagrammi/*.svg
 
 # Dipendenze
 node_modules/
