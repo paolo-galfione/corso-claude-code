@@ -77,7 +77,7 @@ Il corso è **ispirazionale, non operativo**: fornisce esempi concreti per stimo
 - Presentazione del caso: backend Express "spaghetti code" da refactorare
 - Analisi del codice legacy con Claude
 - Esplorazione di possibili approcci di refactoring
-- Valutazione trade-off delle soluzioni
+- Valutazione compromessi delle soluzioni
 
 #### Screencast 2.2: Validazione e Criteri di Accettazione
 **Scopo**: Usare Claude per definire criteri di qualità misurabili

@@ -75,7 +75,14 @@ Lo skill:
 - Blu scuro: `#005291`
 - Blu sfondo: `#e6f3fa`
 
+## Convenzioni Linguistiche
+
+- Scrivi i contenuti del corso in italiano
+- Sostituire "trade-off" con "compromesso"
+- I termini tecnici di uso comune tra sviluppatori restano in inglese (refactoring, pattern, deploy, commit, ecc.)
+
 ## Convenzioni Git
 
 - Messaggi di commit essenziali e sintetici
 - Non aggiungere firme Co-Authored-By
+- Fai commit di tutti i file modificati
