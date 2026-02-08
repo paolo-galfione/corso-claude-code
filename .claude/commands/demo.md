@@ -66,12 +66,12 @@ Se lo script prevede un errore:
 
 **IMPORTANTE**: Gli errori sono INTENZIONALI per scopo didattico. Non risolverli immediatamente.
 
-#### 3. MESSAGGI E COMUNICAZIONE
+#### 3. MESSAGGI E COMUNICAZIONE (per sviluppatori esperti)
 
-- Usa i messaggi suggeriti in `**Testo da leggere durante la demo**:`
-- Mantieni il tono educativo e descrittivo
-- Mostra il ragionamento esplicitamente
-- Commenta ogni azione PRIMA di eseguirla
+- **Conciso e tecnico**: elimina frasi narrative ("Invece di fermarmi...", "Analizzo il problema...")
+- **Bullet point essenziali**: raggiunamento in 1-2 righe max
+- **Mostra, non raccontare**: lascia che il codice e l'output parlino
+- **Commenta azioni solo quando non ovvie**: sviluppatori esperti capiscono i tool base
 
 #### 4. TOOL E COMANDI
 
@@ -83,7 +83,7 @@ Se lo script prevede un errore:
 #### 5. TIMING
 
 - Lascia tempo tra le azioni per la narrazione
-- Non eseguire tutto in sequenza rapida
+- Non eseguire tutto in sequenza troppo rapida
 - Attendi conferma implicita prima di correggere errori
 - Ricorda: l'utente sta REGISTRANDO, serve tempo per commentare
 
@@ -138,16 +138,62 @@ Se lo script prevede un errore:
 
 ---
 
+## Stile Output per Sviluppatori Esperti
+
+Il pubblico è composto da sviluppatori con notevole esperienza. Adatta lo stile di conseguenza:
+
+### ✅ FARE:
+- Output tecnico e diretto
+- Mostrare codice e output senza preamboli
+- Commento essenziale in 1 riga quando necessario
+- Lasciare che errori e fix parlino da soli
+- Usare terminologia tecnica senza semplificazioni
+
+### ❌ NON FARE:
+- Frasi narrative ("Ora vediamo...", "Cosa succede se...", "Interessante...")
+- Spiegazioni didascaliche ("Invece di fermarmi...", "Analizzo il problema...")
+- Ripetere l'ovvio ("Eseguo il codice", "Apro il file")
+- Liste prolisse di opzioni
+- Tono da tutorial per principianti
+
+### Esempio di stile SBAGLIATO (troppo verboso):
+```
+"Ora scrivo una funzione che legge un file. Uso fs.readFileSync
+per semplicità. Vediamo cosa succede quando lo eseguo..."
+
+[Esegue]
+
+"Ho ricevuto un errore! Il file non esiste. Invece di fermarmi,
+analizzo il problema. Ci sono due opzioni:
+1. Creare il file mancante
+2. Gestire l'errore con try-catch
+Scelgo la seconda opzione perché è più robusta."
+```
+
+### Esempio di stile CORRETTO (asciutto):
+```
+[Scrive codice con fs.readFileSync]
+[Esegue → Error: ENOENT]
+
+File mancante. Gestisco con try-catch.
+
+[Fix con error handling]
+[Ri-esegue → funziona]
+```
+
+---
+
 ## Cosa NON Fare in Modalità Demo
 
 ❌ **Non improvvisare** soluzioni diverse da quelle previste
 ❌ **Non ottimizzare** il codice oltre lo script
 ❌ **Non correggere** errori prima che lo script lo indichi
 ❌ **Non usare** shortcut o automazioni non previste
-❌ **Non saltare** passaggi "ovvi" (sono didattici)
-❌ **Non nascondere** output o errori (servono per la registrazione)
-❌ **Non aggiungere** spiegazioni non richieste
+❌ **Non saltare** passaggi anche se ovvi
+❌ **Non nascondere** output o errori
+❌ **Non aggiungere** narrazione ("Ora faccio...", "Vediamo...")
 ❌ **Non usare** TodoWrite (distrae dalla demo)
+❌ **Non spiegare tool base** (Read, Edit, Bash - sono ovvi per esperti)
 
 ---
 
@@ -163,26 +209,22 @@ Quando l'utente esegue `/demo <nome-modulo> [numero-demo]`:
 
 2. **Output PULITO per registrazione**:
 
-   **IMPORTANTE**: La risposta deve essere minimale e pulita per la registrazione.
-   NON mostrare liste di demo, NON mostrare spiegazioni introduttive.
-
    Rispondi SOLO con:
    ```
    ▶ DEMO <N>: <titolo>
    ```
 
-   Poi ATTENDI che l'utente dica "via" o "inizia" prima di procedere.
+   Poi ATTENDI "via" dall'utente prima di procedere.
 
 3. **Durante la demo**:
-   - Segui lo script passo-passo
-   - Commenta ogni azione PRIMA di eseguirla
-   - Mostra errori senza correggerli immediatamente
-   - Spiega il ragionamento come da "Punti da evidenziare"
+   - Esegui lo script passo-passo
+   - Output tecnico e asciutto (max 1-2 righe di contesto)
+   - Mostra errori → ragionamento essenziale → fix
+   - Evita narrazione ("Ora faccio...", "Vediamo cosa succede...")
 
 4. **Fine demo**:
-   - NON mostrare checklist o riepilogo (distrae dalla registrazione)
-   - Se ci sono altre demo da fare, mostra solo: `▶ DEMO <N+1>: <titolo>`
-   - Se è l'ultima, mostra solo: `✅ Demo completata`
+   - Se ci sono altre demo: `▶ DEMO <N+1>: <titolo>`
+   - Se è l'ultima: `✅`
 
 ---
 
@@ -209,7 +251,7 @@ Quando l'utente esegue `/demo <nome-modulo> [numero-demo]`:
 - Analizza l'errore, propone e applica la correzione
 ```
 
-**Esecuzione in Modalità Demo**:
+**Esecuzione in Modalità Demo (stile sviluppatori esperti)**:
 
 ```
 Utente: /demo 1.1-cambio-di-paradigma 1
@@ -218,43 +260,22 @@ Claude: ▶ DEMO 1: L'Agente che si Auto-Corregge
 
 Utente: via
 
-Claude: "Scrivo una funzione che legge un file config.json e stampa il contenuto"
+Claude: [Scrive codice con fs.readFileSync senza try-catch]
 
-[Scrive codice con fs.readFileSync senza try-catch]
+Claude: [Lancia con node index.js]
+Error: ENOENT: no such file or directory, open 'config.json'
 
----
+Claude: File mancante. Gestisco con try-catch invece di creare file.
 
-Claude: "Eseguo il codice"
+Claude: [Modifica con try-catch e fallback]
 
-[Lancia con node index.js]
-[Errore: Error: ENOENT: no such file or directory]
+Claude: [Ri-esegue]
+> File config.json non trovato. Uso configurazione di default.
 
----
-
-Claude: "Ho ricevuto un errore: il file config.json non esiste.
-Invece di fermarmi, analizzo il problema:
-- Opzione 1: Creare il file
-- Opzione 2: Gestire l'errore con try-catch
-
-Scelgo l'opzione 2 per robustezza."
-
----
-
-Claude: "Correggo il codice aggiungendo gestione errore"
-
-[Modifica con try-catch e messaggio user-friendly]
-
----
-
-Claude: "Ri-eseguo per verificare la correzione"
-
-[Lancia di nuovo]
-[Output: "File config.json non trovato. Uso configurazione di default."]
-
-"La correzione funziona. L'agente ha gestito l'errore autonomamente."
-
-✅ Demo completata
+✅
 ```
+
+**Nota**: Output minimale, tecnico, zero narrazione. L'utente può commentare dal vivo durante la registrazione.
 
 ---
 

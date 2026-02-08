@@ -13,7 +13,8 @@
         "anthropic.claude-code",
         "marp-team.marp-vscode",
         "tomoki1207.pdf",
-        "qwtel.sqlite-viewer"
+        "qwtel.sqlite-viewer",
+        "humao.rest-client"
       ]
     }
   },
